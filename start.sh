@@ -13,22 +13,22 @@ fi
 
 # 安装 chronocat-api
 if [ ! -f "/opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-engine-chronocat-api-v0.2.4/manifest.json" ]; then
-    unzip /tmp/chronocat-llqqnt-engine-chronocat-api-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-engine-chronocat-api-v0.2.4/
+    unzip /tmp/chronocat-llqqnt-engine-chronocat-api-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/
 fi
 
 # 安装 chronocat-event
 if [ ! -f "/opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-engine-chronocat-event-v0.2.4/manifest.json" ]; then
-    unzip /tmp/chronocat-llqqnt-engine-chronocat-event-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-engine-chronocat-event-v0.2.4/
+    unzip /tmp/chronocat-llqqnt-engine-chronocat-event-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/
 fi
 
 # 安装 poke
 if [ ! -f "/opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-engine-poke-v0.2.4/manifest.json" ]; then
-    unzip /tmp/chronocat-llqqnt-engine-poke-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-engine-poke-v0.2.4/
+    unzip /tmp/chronocat-llqqnt-engine-poke-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/
 fi
 
 # 安装 chronocat
 if [ ! -f "/opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-v0.2.4/manifest.json" ]; then
-    unzip /tmp/chronocat-llqqnt-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/chronocat-llqqnt-v0.2.4/
+    unzip /tmp/chronocat-llqqnt-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/
 fi
 
 chmod 777 /tmp &
