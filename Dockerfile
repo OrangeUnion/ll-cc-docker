@@ -15,10 +15,10 @@ RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
     sed -i "1i\require('/opt/QQ/resources/app/LiteLoader/');" /opt/QQ/resources/app/app_launcher/index.js && \
         ##  ---调试开启 检测修补情况 cat /opt/QQ/resources/app/app_launcher/index.js  && \
     # 下载ChrOnoCat
-    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api-v0.2.4.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.4/chronocat-llqqnt-engine-chronocat-api-v0.2.4.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event-v0.2.4.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.4/chronocat-llqqnt-engine-chronocat-event-v0.2.4.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-engine-poke-v0.2.4.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.4/chronocat-llqqnt-engine-poke-v0.2.4.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-v0.2.4.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.4/chronocat-llqqnt-v0.2.4.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-engine-chronocat-api-v0.2.5.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-engine-chronocat-event-v0.2.5.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-poke-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-engine-poke-v0.2.5.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-v0.2.5.zip && \
     # 自动配置
     \
     mkdir -p ~/.vnc && \
