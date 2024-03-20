@@ -6,11 +6,6 @@ if [ ! -f "/opt/QQ/resources/app/LiteLoader/package.json" ]; then
     unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader/
 fi
 
-# 安装 LLOneBot
-if [ ! -f "/opt/QQ/resources/app/LiteLoader/plugins/LLOneBot/manifest.json" ]; then
-    unzip /tmp/LLOneBot.zip -d /opt/QQ/resources/app/LiteLoader/plugins/LLOneBot/
-fi
-
 # 安装 chronocat-api
 if [ ! -f "/opt/QQ/resources/app/LiteLoader/plugins/LiteLoaderQQNT-Plugin-Chronocat-Engine-Chronocat-Api/manifest.json" ]; then
     unzip /tmp/chronocat-llqqnt-engine-chronocat-api-v0.2.4.zip -d /opt/QQ/resources/app/LiteLoader/plugins/
