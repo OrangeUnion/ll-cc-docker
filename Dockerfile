@@ -2,6 +2,7 @@ FROM mlikiowa/llonebot-docker:base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWD=vncpasswd
+ENV VERSION=v0.2.7
 COPY start.sh /root/start.sh
 
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
@@ -15,10 +16,10 @@ RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
     sed -i "1i\require('/opt/QQ/resources/app/LiteLoader/');" /opt/QQ/resources/app/app_launcher/index.js && \
         ##  ---调试开启 检测修补情况 cat /opt/QQ/resources/app/app_launcher/index.js  && \
     # 下载ChrOnoCat
-    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-engine-chronocat-api-v0.2.5.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-engine-chronocat-event-v0.2.5.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-engine-poke-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-engine-poke-v0.2.5.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-v0.2.5.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.5/chronocat-llqqnt-v0.2.5.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-engine-chronocat-api-${VERSION}.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-engine-chronocat-event-${VERSION}.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-crychiccat.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-engine-crychiccat-${VERSION}.zip && \
+    curl -L -o /tmp/chronocat-llqqnt.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-${VERSION}.zip && \
     # 自动配置
     \
     mkdir -p ~/.vnc && \
