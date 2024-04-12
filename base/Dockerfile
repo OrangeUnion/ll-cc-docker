@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     libasound2 \
     fonts-wqy-zenhei \
     git \
-    gnutls-bin && \    
+    gnutls-bin && \
     apt-get clean --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     # 安装NoVnc
