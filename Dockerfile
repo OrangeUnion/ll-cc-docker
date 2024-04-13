@@ -37,7 +37,9 @@ RUN git config --global http.sslVerify false && git config --global http.postBuf
 
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
     curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_${arch}.deb
-RUN dpkg -i /root/linuxqq.deb && apt -f install -y && rm /root/linuxqq.deb \
+RUN dpkg -i /root/linuxqq.deb
+RUN apt -f install -y
+RUN rm /root/linuxqq.deb
 
 # 下载LiteLoader
 RUN curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.1.1/LiteLoaderQQNT.zip && \
