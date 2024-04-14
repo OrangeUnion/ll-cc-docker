@@ -50,11 +50,6 @@ RUN version=$(curl -Ls "https://api.github.com/repos/LiteLoaderQQNT/LiteLoaderQQ
     sed -i "1i\require('/opt/QQ/resources/app/LiteLoader/');" /opt/QQ/resources/app/app_launcher/index.js
         ##  ---调试开启 检测修补情况 cat /opt/QQ/resources/app/app_launcher/index.js  && \
 
-# 安装 LLOneBot
-RUN mkdir -p /opt/QQ/resources/app/LiteLoader/plugins/LLOneBot && \
-    unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader/ && \
-    unzip /tmp/LLOneBot.zip -d /opt/QQ/resources/app/LiteLoader/plugins/LLOneBot/
-
 # 下载LLOneBot \
 RUN ll_version=$(curl -Ls "https://api.github.com/repos/LLOneBot/LLOneBot/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
     curl -L -o /tmp/LLOneBot.zip https://github.com/LLOneBot/LLOneBot/releases/download/${ll_version}/LLOneBot.zip && \
@@ -69,7 +64,12 @@ RUN ll_version=$(curl -Ls "https://api.github.com/repos/LLOneBot/LLOneBot/releas
     echo "[program:qq]" >> /etc/supervisord.conf && \
     echo "command=qq --no-sandbox" >> /etc/supervisord.conf && \
     echo 'environment=DISPLAY=":1"' >> /etc/supervisord.conf
-    
+
+# 安装 LLOneBot
+RUN mkdir -p /opt/QQ/resources/app/LiteLoader/plugins/LLOneBot && \
+    unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader/ && \
+    unzip /tmp/LLOneBot.zip -d /opt/QQ/resources/app/LiteLoader/plugins/LLOneBot/ \
+
 VOLUME ["/opt/QQ/resources/app/LiteLoader"]
 # 设置容器启动时运行的命令
 CMD ["/bin/bash", "-c", "startx & sh /root/start.sh"]
