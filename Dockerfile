@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWD=vncpasswd
 COPY start.sh /root/start.sh
 
-RUN apt-get update && apt-get install -y \
+RUN apt update && apt install -y \
     openbox \
     xorg \
     dbus-user-session \
