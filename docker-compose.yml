@@ -1,8 +1,8 @@
 services:
   llonebot-docker:
-    image: mlikiowa/llonebot-docker
+    image: voidwind/ll-docker
     tty: true
-    container_name: llonebot-docker
+    container_name: ll-docker
     restart: always
     ports:
       - "5900:5900"       #vnc默认端口
