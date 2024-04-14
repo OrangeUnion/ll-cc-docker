@@ -2,7 +2,6 @@ FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWD=vncpasswd
-ENV VERSION=v0.2.7
 COPY start.sh /root/start.sh
 
 RUN apt update && apt install -y \
@@ -42,17 +41,19 @@ RUN chmod +x /root/linuxqq.deb && apt install -y /root/linuxqq.deb
 RUN rm /root/linuxqq.deb
 
 # 下载LiteLoader
-RUN curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.1.1/LiteLoaderQQNT.zip && \
+RUN version=$(curl -Ls "https://api.github.com/repos/LiteLoaderQQNT/LiteLoaderQQNT/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
+    curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/${version}/LiteLoaderQQNT.zip && \
     mkdir -p /opt/QQ/resources/app/LiteLoader && \
         ##  ---调试开启  检测文件情况 ls /opt/QQ/resources/app/app_launcher/ && \
     # 修补QQ载入LiteLoader
     sed -i "1i\require('/opt/QQ/resources/app/LiteLoader/');" /opt/QQ/resources/app/app_launcher/index.js
         ##  ---调试开启 检测修补情况 cat /opt/QQ/resources/app/app_launcher/index.js  && \
 # 下载ChrOnoCat
-RUN curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-engine-chronocat-api-${VERSION}.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-engine-chronocat-event-${VERSION}.zip && \
-    curl -L -o /tmp/chronocat-llqqnt-engine-crychiccat.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-engine-crychiccat-${VERSION}.zip && \
-    curl -L -o /tmp/chronocat-llqqnt.zip https://github.com/chrononeko/chronocat/releases/download/${VERSION}/chronocat-llqqnt-${VERSION}.zip && \
+RUN cc_version=$(curl -Ls "https://api.github.com/repos/chrononeko/chronocat/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api.zip https://github.com/chrononeko/chronocat/releases/download/${cc_version}/chronocat-llqqnt-engine-chronocat-api-${cc_version}.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event.zip https://github.com/chrononeko/chronocat/releases/download/${cc_version}/chronocat-llqqnt-engine-chronocat-event-${cc_version}.zip && \
+    curl -L -o /tmp/chronocat-llqqnt-engine-crychiccat.zip https://github.com/chrononeko/chronocat/releases/download/${cc_version}/chronocat-llqqnt-engine-crychiccat-${cc_version}.zip && \
+    curl -L -o /tmp/chronocat-llqqnt.zip https://github.com/chrononeko/chronocat/releases/download/${cc_version}/chronocat-llqqnt-${cc_version}.zip && \
     # 自动配置
     \
     mkdir -p ~/.vnc && \
