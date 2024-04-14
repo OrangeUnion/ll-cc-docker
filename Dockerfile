@@ -35,20 +35,24 @@ RUN apt-get update && apt-get install -y \
     cp /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_amd64_01.deb
-# https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_arm64_01.deb
+# 下载QQ
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
     curl -o https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_${arch}_01.deb && \
     chmod +x /root/linuxqq.deb && \
-    apt install -y /root/linuxqq.deb && rm /root/linuxqq.deb && \
-    # 下载LiteLoader
-    curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.1.1/LiteLoaderQQNT.zip && \
+    apt install -y /root/linuxqq.deb && rm /root/linuxqq.deb \
+
+# 下载LiteLoader \
+RUN version=$(curl -Ls "https://api.github.com/repos/LLOneBot/LLOneBot/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
+    curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/${version}/LiteLoaderQQNT.zip && \
     mkdir -p /opt/QQ/resources/app/LiteLoader && \
         ##  ---调试开启  检测文件情况 ls /opt/QQ/resources/app/app_launcher/ && \
     # 修补QQ载入LiteLoader
-    sed -i "1i\require('/opt/QQ/resources/app/LiteLoader/');" /opt/QQ/resources/app/app_launcher/index.js && \
+    sed -i "1i\require('/opt/QQ/resources/app/LiteLoader/');" /opt/QQ/resources/app/app_launcher/index.js
         ##  ---调试开启 检测修补情况 cat /opt/QQ/resources/app/app_launcher/index.js  && \
-    # 下载LLOneBot
-    curl -L -o /tmp/LLOneBot.zip https://github.com/LLOneBot/LLOneBot/releases/download/$(curl -Ls "https://api.github.com/repos/LLOneBot/LLOneBot/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')/LLOneBot.zip && \
+
+# 下载LLOneBot \
+RUN ll_version=$(curl -Ls "https://api.github.com/repos/LLOneBot/LLOneBot/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
+    curl -L -o /tmp/LLOneBot.zip https://github.com/LLOneBot/LLOneBot/releases/download/${ll_version}/LLOneBot.zip && \
     # 自动配置
     \
     mkdir -p ~/.vnc && \
