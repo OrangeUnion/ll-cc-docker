@@ -1,6 +1,5 @@
 #!/bin/bash
 
-mkdir -p /opt/QQ/resources/app/LiteLoader/plugins/LLOneBot
 # 安装 LiteLoader
 if [ ! -f "/opt/QQ/resources/app/LiteLoader/package.json" ]; then
     unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader/
