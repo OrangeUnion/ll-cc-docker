@@ -37,9 +37,9 @@ RUN apt-get update && apt-get install -y \
 # https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_amd64_01.deb
 # 下载QQ
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
-    curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_${arch}_01.deb && \
-    chmod +x /root/linuxqq.deb && \
-    apt install -y /root/linuxqq.deb && rm /root/linuxqq.deb \
+    curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240410_${arch}_01.deb
+RUN chmod +x /root/linuxqq.deb && apt install -y /root/linuxqq.deb
+RUN rm /root/linuxqq.deb
 
 # 下载LiteLoader \
 RUN version=$(curl -Ls "https://api.github.com/repos/LLOneBot/LLOneBot/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
