@@ -3,6 +3,8 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWD=vncpasswd
 COPY start.sh /root/start.sh
+# 添加国内源
+# COPY sources.list /etc/apt/sources.list
 
 RUN apt update && apt install -y \
     openbox \
