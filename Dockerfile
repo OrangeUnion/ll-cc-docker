@@ -38,7 +38,7 @@ RUN git config --global http.sslVerify false && git config --global http.postBuf
 
 # https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.10_240715_amd64_01.deb
 RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) && \
-    curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.15_30899_${arch}_01.deb
+    curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/63c751e8/linuxqq_3.2.15-30899_${arch}.deb
 RUN chmod +x /root/linuxqq.deb && apt install -y /root/linuxqq.deb
 RUN rm /root/linuxqq.deb
 
